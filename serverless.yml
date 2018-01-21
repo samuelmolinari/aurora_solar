@@ -55,11 +55,17 @@ provider:
 #    - exclude-me-dir/**
 
 functions:
-  hello:
-    handler: handler.hello
+  directory:
+    handler: handler.directory
     events:
       - http:
-          path: hello
+          path: directory
+          method: get
+  feed:
+    handler: handler.feed
+    events:
+      - http:
+          path: feed/{id}
           method: get
 
 #    The following are a few example events you can configure
@@ -108,5 +114,6 @@ functions:
 #       Value: "Some output value"
 
 plugins:
+  - serverless-webpack
   - serverless-offline
 
